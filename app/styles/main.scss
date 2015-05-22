@@ -1,18 +1,77 @@
 // bower:scss
 // endbower
 
+@import "bourbon";
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html, body {
+  height: 100%;
+}
+
 body {
-  background: #fafafa;
+  background: white;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #333;
+  overflow: hidden;
+  position: relative;
 }
 
-.pill {
+@include keyframes(spin) {
+  0% {
+    @include transform(translateY(-50%) translateX(-50%) rotate(0deg));
+  }
 
+  100% {
+    @include transform(translateY(-50%) translateX(-50%) rotate(360deg));
+  }
 }
+
 
 canvas{
   background: #fff;
+}
+
+.brand {
+  position: fixed;
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+
+.spiral {
+  height: 100%;
+  width: 100%;
+
+  img {
+    @include transform(translateY(-50%) translateX(-50%));
+    @include animation(spin 80.0s linear infinite);
+    position: absolute;
+    height: 240%;
+    min-height: 100%;
+    left: 50%;
+    top: 50%;
+    min-width: 130%;
+    width: auto;
+  }
+}
+
+.logo {
+  @include transform(translateY(-50%) translateX(-50%));
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 40%;
+
+  @media screen and (max-width: 600px) {
+    width: 65%;
+  }
 }
 
 .browserupgrade {
